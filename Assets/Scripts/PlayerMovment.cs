@@ -10,23 +10,20 @@ public class PlayerMovment : MonoBehaviour
 
     public float speed = 5f;
 
+    public SpriteRenderer spriteRenderer;
 
 
     // Start is called before the first frame update
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
-
-
-
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        movement = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
+        movement = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
     }
 
     private void FixedUpdate()
@@ -42,5 +39,6 @@ public class PlayerMovment : MonoBehaviour
 
         RB.velocity = movement * speed;
     }
+
 
 }
