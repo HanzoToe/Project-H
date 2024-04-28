@@ -6,8 +6,7 @@ public class PlayerMovment : MonoBehaviour
 {
     Rigidbody2D RB;
 
-    float movementx;
-    float movementy;
+    Vector2 movement;
 
     public float speed = 5f;
 
@@ -26,13 +25,7 @@ public class PlayerMovment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movementx = Input.GetAxisRaw("Horizontal");
-        movementy = Input.GetAxisRaw("Vertical");
-
-
-
-
-
+        movement = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
     }
 
@@ -47,10 +40,7 @@ public class PlayerMovment : MonoBehaviour
     {
         //Movment Scprit for us. I have no idea how it exactly works fr fr ong ong
 
-        RB.velocity = new Vector2(movementx * speed, RB.velocity.y);
-        RB.velocity = new Vector2(RB.velocity.x, movementy * speed);
-
-        
+        RB.velocity = movement * speed;
     }
 
 }
